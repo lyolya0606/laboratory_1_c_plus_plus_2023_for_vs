@@ -18,9 +18,9 @@ enum input_choice {
   FILE_INPUT
 };
 
-int is_a_substring(string sentence, string substr, int position) {
+int is_substring(string sentence, string substr, int position) {
   if (sentence.find(substr) != std::string::npos) {
-    return sentence.find(substr, position);
+    return static_cast<int>(sentence.find(substr, position));
   } else {
     return -1;
   }
@@ -33,8 +33,8 @@ vector<int> search_for_all_substring(string text, string substring) {
   int position{ 0 };
 
   do {
-    index_of_substring = is_a_substring(text, substring, position);
-    position = index_of_substring + substring.length();
+    index_of_substring = is_substring(text, substring, position);
+    position = index_of_substring + static_cast<int>(substring.length());
     if (index_of_substring == IS_NOT_SUBSTRING) {
       break;
     }
@@ -58,15 +58,16 @@ void work_with_text() {
 
     case KEYBOARD_INPUT: {
       text = keyboard_input();
+      saving_files_input(text, "input");
       stop = true;
     }
-                       break;
+    break;
 
     case FILE_INPUT: {
       text = file_input();
       stop = true;
     }
-                   break;
+    break;
 
     default:
       cout << "There is no such choice!" << endl;
@@ -75,8 +76,6 @@ void work_with_text() {
 
   } while (!stop);
 
-
-  saving_files_input(text, "input");
 
   string substring = substring_input();
 
@@ -93,7 +92,7 @@ void work_with_text() {
       cout << text.substr(start, index - start) + "\033[1;32m"
         << text.substr(index, substring.length())
         << "\033[0m";
-      start = index + substring.length();
+      start = index + static_cast<int>(substring.length());
 
     }
     cout << text.substr(start) << endl;

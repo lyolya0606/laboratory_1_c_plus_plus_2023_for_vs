@@ -21,11 +21,8 @@ string file_input() {
     getline(file, str);
     text += str;
   }
-  cout << "Read data:" << endl << text;
+  cout << "Read data:" << endl << text << endl;
 
-  //    for (int i = 0; i < lines.size(); i++) {
-  //        cout << lines[i] << endl;
-  //    }
   file.close();
   return text;
 }

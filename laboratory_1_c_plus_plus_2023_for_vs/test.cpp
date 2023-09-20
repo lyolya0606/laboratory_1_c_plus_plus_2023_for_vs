@@ -13,7 +13,7 @@ bool test_1() {
   string substring = "he";
 
   int correct_count = 4;
-  int count = search_for_all_substring(text, substring).size();
+  int count = static_cast<int>(search_for_all_substring(text, substring).size());
 
   if (count == correct_count) {
     return true;
@@ -30,7 +30,7 @@ bool test_2() {
   string substring = "z";
 
   int correct_count = 0;
-  int count = search_for_all_substring(text, substring).size();
+  int count = static_cast<int>(search_for_all_substring(text, substring).size());
 
   if (count == correct_count) {
     return true;
@@ -47,7 +47,7 @@ bool test_3() {
   string substring = "e";
 
   int correct_count = 2;
-  int count = search_for_all_substring(text, substring).size();
+  int count = static_cast<int>(search_for_all_substring(text, substring).size());
 
   if (count == correct_count) {
     return true;
@@ -64,7 +64,7 @@ bool test_4() {
   string substring = "hell";
 
   int correct_count = 3;
-  int count = search_for_all_substring(text, substring).size();
+  int count = static_cast<int>(search_for_all_substring(text, substring).size());
 
   if (count == correct_count) {
     return true;
@@ -81,7 +81,7 @@ bool test_5() {
   string substring = "world";
 
   int correct_count = 0;
-  int count = search_for_all_substring(text, substring).size();
+  int count = static_cast<int>(search_for_all_substring(text, substring).size());
 
   if (count == correct_count) {
     return true;
@@ -95,7 +95,6 @@ bool test_5() {
 
 void checking_tests() {
   int test_counter{};
-  bool check;
   const int ALL_TESTS_PASSED{ 5 };
 
   if (test_1()) {
